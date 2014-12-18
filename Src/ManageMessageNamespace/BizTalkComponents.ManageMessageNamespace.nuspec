@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>BizTalkComponents.PipelineComponents.ManageMessageNamespace</id>
+    <version>1.0.0.0</version>
+    <authors>riha</authors>
+    <owners>ibizsolutions</owners>
+    <description>Shared.PipelineComponents.ManageMessageNamespace</description>
+  </metadata>
+</package>
