@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalkComponents.ManageMessageNamespace", "Src\ManageMessageNamespace\BizTalkComponents.ManageMessageNamespace.csproj", "{B206213C-8466-44EB-AA0A-40846CEA2730}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalkComponents.ManageMessageNamespace.Tests", "Test\UnitTests\BizTalkComponents.ManageMessageNamespace.Tests.csproj", "{AEC1FC5D-999E-4FC7-8C78-F51C1311488E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8C8AF2A5-ADE9-4722-995B-584FEAA2FC50}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B206213C-8466-44EB-AA0A-40846CEA2730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B206213C-8466-44EB-AA0A-40846CEA2730}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B206213C-8466-44EB-AA0A-40846CEA2730}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B206213C-8466-44EB-AA0A-40846CEA2730}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEC1FC5D-999E-4FC7-8C78-F51C1311488E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEC1FC5D-999E-4FC7-8C78-F51C1311488E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEC1FC5D-999E-4FC7-8C78-F51C1311488E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEC1FC5D-999E-4FC7-8C78-F51C1311488E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

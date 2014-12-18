@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Tests>
+  <Test1>
+    <InnerTest></InnerTest>
+  </Test1>
+  <Test2>
+    <InnerTest></InnerTest>
+  </Test2>
+  <Test3>
+    <InnerTest></InnerTest>
+  </Test3>
+</Tests>
