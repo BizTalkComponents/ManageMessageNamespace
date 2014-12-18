@@ -1,0 +1,19 @@
+<Project DefaultTargets="GenerateMsi" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Import Project="BtsMsiTask\BtsMsiTask.targets" />
+	<PropertyGroup>
+		<DestinationPath>Deploy</DestinationPath>
+		<ApplicationName>ManageMessageNamespace</ApplicationName>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- Add all non BizTalk resources to include in the MSI as Resource nodes -->
+		<Resource Include="..\Src\ManageMessageNamespace\bin\Debug\BizTalkComponents.ManageMessageNamespace.dll" />
+	</ItemGroup>
+	<Target Name="GenerateMsi">
+		<MsiTask 
+			DestinationPath="$(DestinationPath)"
+			ApplicationName="$(ApplicationName)"
+			BtsAssemblies="@(BtsAssembly)"
+			Resources="@(Resource)" 
+			ReferenceApplications="@(ReferenceApplication)" />
+	</Target>
+</Project>

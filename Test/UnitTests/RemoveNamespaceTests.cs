@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Xml;
 using Microsoft.BizTalk.Component.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Shared.PipelineComponents.ManageMessageNamespace.Tests;
 using Shared.PipelineComponents.ManageMessageNamespace.Tests.Constants;
 using Winterdom.BizTalk.PipelineTesting;
 
-namespace Shared.PipelineComponents.ManageMessageNamespace.Tests
+namespace BizTalkComponents.ManageMessageNamespace.Tests
 {
     [TestClass]
     public class RemoveNamespaceTests

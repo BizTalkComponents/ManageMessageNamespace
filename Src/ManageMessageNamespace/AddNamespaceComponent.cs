@@ -3,11 +3,10 @@ using System.ComponentModel;
 using System.IO;
 using Microsoft.BizTalk.Component.Interop;
 using Microsoft.BizTalk.Message.Interop;
-using Microsoft.BizTalk.Streaming;
 
 // TODO: Should have better GUI name for exposed parameters
 
-namespace Shared.PipelineComponents.ManageMessageNamespace
+namespace BizTalkComponents.ManageMessageNamespace
 {
     [ComponentCategory(CategoryTypes.CATID_PipelineComponent)]
     [ComponentCategory(CategoryTypes.CATID_Any)]

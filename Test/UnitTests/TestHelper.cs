@@ -11,7 +11,7 @@ using Shared.PipelineComponents.ManageMessageNamespace.Tests.Constants;
 using Shared.PipelineComponents.ManageMessageNamespace.Tests.Models;
 using Winterdom.BizTalk.PipelineTesting;
 
-namespace Shared.PipelineComponents.ManageMessageNamespace.Tests
+namespace BizTalkComponents.ManageMessageNamespace.Tests
 {
     static class TestHelper
     {

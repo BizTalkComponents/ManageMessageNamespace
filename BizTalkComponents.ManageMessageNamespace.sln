@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalkComponents.ManageMessageNamespace", "Src\ManageMessageNamespace\BizTalkComponents.ManageMessageNamespace.csproj", "{B206213C-8466-44EB-AA0A-40846CEA2730}"
 EndProject
@@ -12,6 +12,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8C8AF2
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Package", "Package", "{E87D8BAF-2DC8-4198-854A-F29E73CB626B}"
+	ProjectSection(SolutionItems) = preProject
+		Package\Package.proj = Package\Package.proj
 	EndProjectSection
 EndProject
 Global
