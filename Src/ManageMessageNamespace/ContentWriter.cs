@@ -147,9 +147,11 @@ namespace BizTalkComponents.ManageMessageNamespace
             var ns = "";
             if (reader.NamespaceURI == namespaceToModify)
                 ns = namespaceToAdd;
-
+            
             if (reader.Prefix == string.Empty)
                 writer.WriteStartElement(reader.LocalName, ns);
+            else if(!string.IsNullOrEmpty(reader.Prefix) && string.IsNullOrEmpty(ns))
+                writer.WriteStartElement(reader.Prefix, reader.LocalName, reader.NamespaceURI);
             else
             {
                 writer.WriteStartElement(reader.Prefix, reader.LocalName, ns);

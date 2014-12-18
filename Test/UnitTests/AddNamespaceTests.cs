@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml;
+using BizTalkComponents.ManageMessageNamespace.Tests.Constants;
 using Microsoft.BizTalk.Component.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shared.PipelineComponents.ManageMessageNamespace.Tests;
