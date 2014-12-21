@@ -13,41 +13,11 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
     [ComponentCategory(CategoryTypes.CATID_Any)]
     [System.Runtime.InteropServices.Guid("C318B1D9-6FA5-40AF-98BD-BAE397A7A6B1")]
 
-    public class RemoveNamespaceComponent : IBaseComponent,
+    public partial class RemoveNamespaceComponent : IBaseComponent,
         Microsoft.BizTalk.Component.Interop.IComponent,
         IComponentUI,
         IPersistPropertyBag
     {
-        #region IBaseComponent members
-
-        [Browsable(false)]
-        public string Name
-        {
-            get
-            {
-                return "Remove Namespace Component";
-            }
-        }
-
-        [Browsable(false)]
-        public string Version
-        {
-            get
-            {
-                return "2.2";
-            }
-        }
-
-        [Browsable(false)]
-        public string Description
-        {
-            get
-            {
-                return @"Removes namespace from a message.";
-            }
-        }
-
-        #endregion
 
         #region IPersistPropertyBag members
 
@@ -62,24 +32,6 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
 
         public virtual void Save(IPropertyBag pb, bool fClearDirty,
             bool fSaveAllProperties){}
-
-        #endregion
-
-        #region IComponentUI members
-
-        [Browsable(false)]
-        public IntPtr Icon
-        {
-            get
-            {
-                return IntPtr.Zero;
-            }
-        }
-
-        public System.Collections.IEnumerator Validate(object obj)
-        {
-            return null;
-        }
 
         #endregion
 
