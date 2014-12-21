@@ -70,6 +70,7 @@
     <Compile Include="ContextReader.cs" />
     <Compile Include="AddNamespaceComponent.cs" />
     <Compile Include="ContentReader.cs" />
+    <Compile Include="ModifyNamespaceComponent.Component.cs" />
     <Compile Include="ModifyNamespaceComponent.cs">
       <SubType>Code</SubType>
     </Compile>

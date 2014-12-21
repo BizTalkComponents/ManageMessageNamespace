@@ -13,7 +13,7 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
     [ComponentCategory(CategoryTypes.CATID_Any)]
     [System.Runtime.InteropServices.Guid("773A16F2-DA80-4562-BDF6-AC7C0CFF8C08")]
 
-    public class ModifyNamespaceComponent : IBaseComponent,
+    public partial class ModifyNamespaceComponent : IBaseComponent,
         Microsoft.BizTalk.Component.Interop.IComponent,
         IComponentUI,
         IPersistPropertyBag
@@ -22,46 +22,6 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
         public string NewNamespace { get; set; }
 
         public bool ShouldUpdateMessageTypeContext { get; set; }
-
-        #region IBaseComponent members
-
-        [Browsable(false)]
-        public string Name
-        {
-            get
-            {
-                return "Modify Namespace Component";
-            }
-        }
-
-        [Browsable(false)]
-        public string Version
-        {
-            get
-            {
-                return "2.2";
-            }
-        }
-
-        [Browsable(false)]
-        public string Description
-        {
-            get
-            {
-                return @"Modifies a message namespace from one namespace to another.";
-            }
-        }
-
-        #endregion
-
-        #region IPersistPropertyBag members
-
-        public void GetClassID(out Guid classid)
-        {
-            classid = new Guid("D4123F35-ED40-46BA-85AF-01B8D5CBBFED");
-        }
-
-        public void InitNew() { }
 
         public virtual void Load(IPropertyBag pb, int errlog)
         {
@@ -92,8 +52,6 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
             WritePropertyBag(pb, "NewNamespace", NewNamespace);
             WritePropertyBag(pb, "ShouldUpdateMessageTypeContext", ShouldUpdateMessageTypeContext);
         }
-
-        #endregion
 
         #region Utility functionality
 
@@ -126,24 +84,6 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
                 throw new ApplicationException(ex.Message);
             }
             return val;
-        }
-
-        #endregion
-
-        #region IComponentUI members
-
-        [Browsable(false)]
-        public IntPtr Icon
-        {
-            get
-            {
-                return IntPtr.Zero;
-            }
-        }
-
-        public System.Collections.IEnumerator Validate(object obj)
-        {
-            return null;
         }
 
         #endregion
