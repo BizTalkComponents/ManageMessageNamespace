@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.IO;
+using BizTalkComponents.Utils;
 using Microsoft.BizTalk.Component.Interop;
 using Microsoft.BizTalk.Message.Interop;
 using Microsoft.BizTalk.Streaming;
@@ -25,23 +26,17 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
 
         public virtual void Load(IPropertyBag pb, int errlog)
         {
-            var val = ReadPropertyBag(pb, "NamespaceToRemove");
+            NamespaceToModify =
+                PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(pb, "NamespaceToRemove"),
+                    string.Empty);
 
-            if ((val != null))
-            {
-                NamespaceToModify = ((string)(val));
-            }
+            NewNamespace = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(pb, "NewNamespace"),string.Empty);
 
-            val = ReadPropertyBag(pb, "NewNamespace");
-            if ((val != null))
+            var shouldUpdateMessageTypeContext = PropertyBagHelper.ReadPropertyBag(pb, "ShouldUpdateMessageTypeContext");
+            
+            if ((shouldUpdateMessageTypeContext != null))
             {
-                NewNamespace = ((string)(val));
-            }
-
-            val = ReadPropertyBag(pb, "ShouldUpdateMessageTypeContext");
-            if ((val != null))
-            {
-                ShouldUpdateMessageTypeContext = ((bool)(val));
+                ShouldUpdateMessageTypeContext = ((bool)(shouldUpdateMessageTypeContext));
             }
         }
 
