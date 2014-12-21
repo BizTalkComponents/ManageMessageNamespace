@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddNamespaceComponent.Component.cs" />
     <Compile Include="BiztalkComponents.Utils\ContextExtensions.cs" />
     <Compile Include="BiztalkComponents.Utils\ContextProperties.cs" />
     <Compile Include="BiztalkComponents.Utils\ContextProperty.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="ContextReader.cs" />
     <Compile Include="AddNamespaceComponent.cs" />
     <Compile Include="ContentReader.cs" />
+    <Compile Include="ModifyNamespaceComponent.Component.cs" />
     <Compile Include="ModifyNamespaceComponent.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -78,6 +80,7 @@
     <Compile Include="NavigationHistoryManager.cs" />
     <Compile Include="NavigationPath.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoveNamespaceComponent.Component.cs" />
     <Compile Include="RemoveNamespaceComponent.cs">
       <SubType>Code</SubType>
     </Compile>
