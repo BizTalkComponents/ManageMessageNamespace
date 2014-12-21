@@ -19,6 +19,11 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
         IComponentUI,
         IPersistPropertyBag
     {
+        private const string XPathPropertyName = "XPath";
+        private const string NewNamespacePropertyName = "NewNamespace";
+        private const string NamespaceFormPropertyName = "NamespaceFormPropertyName";
+        private const string ShouldUpdateMessageTypeContextPropertyName = "ShouldUpdateMessageTypeContext";
+       
         public string NewNamespace { get; set; }
         public bool ShouldUpdateMessageTypeContext { get; set; }
         public NamespaceFormEnum NamespaceForm { get; set; }
@@ -28,18 +33,18 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
        
         public virtual void Load(IPropertyBag pb, int errlog)
         {
-            NewNamespace = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(pb, "NewNamespace"), string.Empty);
+            NewNamespace = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(pb, NewNamespacePropertyName), string.Empty);
 
-            var namespaceForm = PropertyBagHelper.ReadPropertyBag(pb, "NamespaceForm");
+            var namespaceForm = PropertyBagHelper.ReadPropertyBag(pb, NamespaceFormPropertyName);
 
             if ((namespaceForm != null))
             {
                 NamespaceForm = ((NamespaceFormEnum)(namespaceForm));
             }
 
-            XPath = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(pb, "XPath"), string.Empty);
+            XPath = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(pb, XPathPropertyName), string.Empty);
 
-            var shouldUpdateMessageTypeContext = PropertyBagHelper.ReadPropertyBag(pb, "ShouldUpdateMessageTypeContext");
+            var shouldUpdateMessageTypeContext = PropertyBagHelper.ReadPropertyBag(pb, ShouldUpdateMessageTypeContextPropertyName);
 
             if ((shouldUpdateMessageTypeContext != null))
             {
@@ -50,45 +55,10 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
         public virtual void Save(IPropertyBag pb, bool fClearDirty,
             bool fSaveAllProperties)
         {
-            PropertyBagHelper.WritePropertyBag(pb, "NewNamespace", NewNamespace);
-            PropertyBagHelper.WritePropertyBag(pb, "NamespaceForm", NamespaceForm);
-            PropertyBagHelper.WritePropertyBag(pb, "XPath", XPath);
-            PropertyBagHelper.WritePropertyBag(pb, "ShouldUpdateMessageTypeContext", ShouldUpdateMessageTypeContext);
-        }
-
-        #endregion
-
-        #region Utility functionality
-
-        private static void WritePropertyBag(IPropertyBag pb, string propName, object val)
-        {
-            try
-            {
-                pb.Write(propName, ref val);
-            }
-            catch (Exception ex)
-            {
-                throw new ApplicationException(ex.Message);
-            }
-        }
-
-        private static object ReadPropertyBag(IPropertyBag pb, string propName)
-        {
-            object val = null;
-            try
-            {
-                pb.Read(propName, out val, 0);
-            }
-
-            catch (ArgumentException)
-            {
-                return val;
-            }
-            catch (Exception ex)
-            {
-                throw new ApplicationException(ex.Message);
-            }
-            return val;
+            PropertyBagHelper.WritePropertyBag(pb, NewNamespacePropertyName, NewNamespace);
+            PropertyBagHelper.WritePropertyBag(pb, NamespaceFormPropertyName, NamespaceForm);
+            PropertyBagHelper.WritePropertyBag(pb, XPathPropertyName, XPath);
+            PropertyBagHelper.WritePropertyBag(pb, ShouldUpdateMessageTypeContextPropertyName, ShouldUpdateMessageTypeContext);
         }
 
         #endregion
