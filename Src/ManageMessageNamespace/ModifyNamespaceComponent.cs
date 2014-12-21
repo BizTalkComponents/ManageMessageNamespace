@@ -43,9 +43,9 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
         public virtual void Save(IPropertyBag pb, bool fClearDirty,
             bool fSaveAllProperties)
         {
-            WritePropertyBag(pb, "NamespaceToRemove", NamespaceToModify);
-            WritePropertyBag(pb, "NewNamespace", NewNamespace);
-            WritePropertyBag(pb, "ShouldUpdateMessageTypeContext", ShouldUpdateMessageTypeContext);
+            PropertyBagHelper.WritePropertyBag(pb, "NamespaceToRemove", NamespaceToModify);
+            PropertyBagHelper.WritePropertyBag(pb, "NewNamespace", NewNamespace);
+            PropertyBagHelper.WritePropertyBag(pb, "ShouldUpdateMessageTypeContext", ShouldUpdateMessageTypeContext);
         }
 
         #region Utility functionality
