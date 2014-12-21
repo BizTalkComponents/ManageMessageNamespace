@@ -61,6 +61,13 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
 
         public IBaseMessage Execute(IPipelineContext pContext, IBaseMessage pInMsg)
         {
+            string errorMessage;
+
+            if (!Validate(out errorMessage))
+            {
+                throw new ArgumentException(errorMessage);
+            }
+
             var contentReader = new ContentReader();
 
             const int bufferSize = 0x280;
