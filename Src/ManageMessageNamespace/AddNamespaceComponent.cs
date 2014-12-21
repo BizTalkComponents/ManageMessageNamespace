@@ -6,8 +6,6 @@ using Microsoft.BizTalk.Component.Interop;
 using Microsoft.BizTalk.Message.Interop;
 using Microsoft.BizTalk.Streaming;
 
-// TODO: Should have better GUI name for exposed parameters
-
 namespace Shared.PipelineComponents.ManageMessageNamespace
 {
     [ComponentCategory(CategoryTypes.CATID_PipelineComponent)]
@@ -23,10 +21,21 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
         private const string NewNamespacePropertyName = "NewNamespace";
         private const string NamespaceFormPropertyName = "NamespaceFormPropertyName";
         private const string ShouldUpdateMessageTypeContextPropertyName = "ShouldUpdateMessageTypeContext";
-       
+
+        [RequiredRuntime]
+        [DisplayName("New Namespace")]
+        [Description("The new namespace to set.")]
         public string NewNamespace { get; set; }
+        [RequiredRuntime]
+        [DisplayName("Should update messagetype context")]
+        [Description("Specifies wether the message type should be updated with the new namespace.")]
         public bool ShouldUpdateMessageTypeContext { get; set; }
+        [RequiredRuntime]
+        [DisplayName("Namespace form")]
+        [Description("0 = Unqualified, 1 = Qualified, 2 = Default")]
         public NamespaceFormEnum NamespaceForm { get; set; }
+        [DisplayName("XPath")]
+        [Description("The path to set namespace on.")]
         public string XPath { get; set; }
 
         #region IPersistPropertyBag members
