@@ -5,8 +5,6 @@ using Microsoft.BizTalk.Component.Interop;
 using Microsoft.BizTalk.Message.Interop;
 using Microsoft.BizTalk.Streaming;
 
-// TODO: Should have better GUI name for exposed parameters
-
 namespace Shared.PipelineComponents.ManageMessageNamespace
 {
     [ComponentCategory(CategoryTypes.CATID_PipelineComponent)]
@@ -15,28 +13,8 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
 
     public partial class RemoveNamespaceComponent : IBaseComponent,
         Microsoft.BizTalk.Component.Interop.IComponent,
-        IComponentUI,
-        IPersistPropertyBag
+        IComponentUI
     {
-
-        #region IPersistPropertyBag members
-
-        public void GetClassID(out Guid classid)
-        {
-            classid = new Guid("36637873-F2E5-4D3F-B0BA-4B24BFEDD73C");
-        }
-
-        public void InitNew() { }
-
-        public virtual void Load(IPropertyBag pb, int errlog){}
-
-        public virtual void Save(IPropertyBag pb, bool fClearDirty,
-            bool fSaveAllProperties){}
-
-        #endregion
-
-        #region IComponent members
-
         public IBaseMessage Execute(IPipelineContext pContext, IBaseMessage pInMsg)
         {
             var contentReader = new ContentReader();
@@ -59,7 +37,5 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
 
             return pInMsg;
         }
-
-        #endregion
     }
 }
