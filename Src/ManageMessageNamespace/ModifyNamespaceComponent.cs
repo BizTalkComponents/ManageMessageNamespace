@@ -1,12 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using BizTalkComponents.Utils;
 using Microsoft.BizTalk.Component.Interop;
 using Microsoft.BizTalk.Message.Interop;
 using Microsoft.BizTalk.Streaming;
-
-// TODO: Should have better GUI name for exposed parameters
 
 namespace Shared.PipelineComponents.ManageMessageNamespace
 {
@@ -22,8 +21,14 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
         private const string NamespaceToModifyPropertyName = "NamespaceToModify";
         private const string NewNamespacePropertyName = "NewNamespace";
         private const string ShouldUpdateMessagewTypeContextPropertyName = "ShouldUpdateMessageTypeContext";
-        
+
+        [RequiredRuntime]
+        [DisplayName("Namespace to modify")]
+        [Description("The namespace that should be changed.")]
         public string NamespaceToModify { get; set; }
+        [RequiredRuntime]
+        [DisplayName("New Namespace")]
+        [Description("The new namespace..")]
         public string NewNamespace { get; set; }
 
         public bool ShouldUpdateMessageTypeContext { get; set; }
