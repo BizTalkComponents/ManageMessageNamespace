@@ -13,7 +13,7 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
     [ComponentCategory(CategoryTypes.CATID_Any)]
     [System.Runtime.InteropServices.Guid("950C8198-9AAD-467E-BA9C-16AA080C7D7C")]
 
-    public class AddNamespaceComponent : IBaseComponent,
+    public partial class AddNamespaceComponent : IBaseComponent,
         Microsoft.BizTalk.Component.Interop.IComponent,
         IComponentUI,
         IPersistPropertyBag
@@ -23,46 +23,8 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
         public NamespaceFormEnum NamespaceForm { get; set; }
         public string XPath { get; set; }
 
-        #region IBaseComponent members
-
-        [Browsable(false)]
-        public string Name
-        {
-            get
-            {
-                return "Add Namespace Component";
-            }
-        }
-
-        [Browsable(false)]
-        public string Version
-        {
-            get
-            {
-                return "2.2";
-            }
-        }
-
-        [Browsable(false)]
-        public string Description
-        {
-            get
-            {
-                return @"Adds a namespace to message.";
-            }
-        }
-
-        #endregion
-
         #region IPersistPropertyBag members
-
-        public void GetClassID(out Guid classid)
-        {
-            classid = new Guid("F961D046-8F95-455E-96CC-A30B41EDD1D9");
-        }
-
-        public void InitNew() { }
-
+       
         public virtual void Load(IPropertyBag pb, int errlog)
         {
             var val = ReadPropertyBag(pb, "NewNamespace");
@@ -133,24 +95,6 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
                 throw new ApplicationException(ex.Message);
             }
             return val;
-        }
-
-        #endregion
-
-        #region IComponentUI members
-
-        [Browsable(false)]
-        public IntPtr Icon
-        {
-            get
-            {
-                return IntPtr.Zero;
-            }
-        }
-
-        public System.Collections.IEnumerator Validate(object obj)
-        {
-            return null;
         }
 
         #endregion
