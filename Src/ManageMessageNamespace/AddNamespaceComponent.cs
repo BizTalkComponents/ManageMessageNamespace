@@ -50,10 +50,10 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
         public virtual void Save(IPropertyBag pb, bool fClearDirty,
             bool fSaveAllProperties)
         {
-            WritePropertyBag(pb, "NewNamespace", NewNamespace);
-            WritePropertyBag(pb, "NamespaceForm", NamespaceForm);
-            WritePropertyBag(pb, "XPath", XPath);
-            WritePropertyBag(pb, "ShouldUpdateMessageTypeContext", ShouldUpdateMessageTypeContext);
+            PropertyBagHelper.WritePropertyBag(pb, "NewNamespace", NewNamespace);
+            PropertyBagHelper.WritePropertyBag(pb, "NamespaceForm", NamespaceForm);
+            PropertyBagHelper.WritePropertyBag(pb, "XPath", XPath);
+            PropertyBagHelper.WritePropertyBag(pb, "ShouldUpdateMessageTypeContext", ShouldUpdateMessageTypeContext);
         }
 
         #endregion
