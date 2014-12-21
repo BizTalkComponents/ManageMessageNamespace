@@ -48,41 +48,6 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
             PropertyBagHelper.WritePropertyBag(pb, "ShouldUpdateMessageTypeContext", ShouldUpdateMessageTypeContext);
         }
 
-        #region Utility functionality
-
-        private static void WritePropertyBag(IPropertyBag pb, string propName, object val)
-        {
-            try
-            {
-                pb.Write(propName, ref val);
-            }
-            catch (Exception ex)
-            {
-                throw new ApplicationException(ex.Message);
-            }
-        }
-
-        private static object ReadPropertyBag(IPropertyBag pb, string propName)
-        {
-            object val = null;
-            try
-            {
-                pb.Read(propName, out val, 0);
-            }
-
-            catch (ArgumentException)
-            {
-                return val;
-            }
-            catch (Exception ex)
-            {
-                throw new ApplicationException(ex.Message);
-            }
-            return val;
-        }
-
-        #endregion
-
         #region IComponent members
 
         public IBaseMessage Execute(IPipelineContext pContext, IBaseMessage pInMsg)
