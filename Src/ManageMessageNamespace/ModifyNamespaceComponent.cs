@@ -27,7 +27,7 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
         public virtual void Load(IPropertyBag pb, int errlog)
         {
             NamespaceToModify =
-                PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(pb, "NamespaceToRemove"),
+                PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(pb, "NamespaceToModify"),
                     string.Empty);
 
             NewNamespace = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(pb, "NewNamespace"),string.Empty);
@@ -43,7 +43,7 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
         public virtual void Save(IPropertyBag pb, bool fClearDirty,
             bool fSaveAllProperties)
         {
-            PropertyBagHelper.WritePropertyBag(pb, "NamespaceToRemove", NamespaceToModify);
+            PropertyBagHelper.WritePropertyBag(pb, "NamespaceToModify", NamespaceToModify);
             PropertyBagHelper.WritePropertyBag(pb, "NewNamespace", NewNamespace);
             PropertyBagHelper.WritePropertyBag(pb, "ShouldUpdateMessageTypeContext", ShouldUpdateMessageTypeContext);
         }
