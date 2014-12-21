@@ -19,6 +19,10 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
         IComponentUI,
         IPersistPropertyBag
     {
+        private const string NamespaceToModifyPropertyName = "NamespaceToModify";
+        private const string NewNamespacePropertyName = "NewNamespace";
+        private const string ShouldUpdateMessagewTypeContextPropertyName = "ShouldUpdateMessageTypeContext";
+        
         public string NamespaceToModify { get; set; }
         public string NewNamespace { get; set; }
 
@@ -27,12 +31,12 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
         public virtual void Load(IPropertyBag pb, int errlog)
         {
             NamespaceToModify =
-                PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(pb, "NamespaceToModify"),
+                PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(pb, NamespaceToModifyPropertyName),
                     string.Empty);
 
-            NewNamespace = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(pb, "NewNamespace"),string.Empty);
+            NewNamespace = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(pb, NewNamespacePropertyName),string.Empty);
 
-            var shouldUpdateMessageTypeContext = PropertyBagHelper.ReadPropertyBag(pb, "ShouldUpdateMessageTypeContext");
+            var shouldUpdateMessageTypeContext = PropertyBagHelper.ReadPropertyBag(pb, ShouldUpdateMessagewTypeContextPropertyName);
             
             if ((shouldUpdateMessageTypeContext != null))
             {
@@ -43,9 +47,9 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
         public virtual void Save(IPropertyBag pb, bool fClearDirty,
             bool fSaveAllProperties)
         {
-            PropertyBagHelper.WritePropertyBag(pb, "NamespaceToModify", NamespaceToModify);
-            PropertyBagHelper.WritePropertyBag(pb, "NewNamespace", NewNamespace);
-            PropertyBagHelper.WritePropertyBag(pb, "ShouldUpdateMessageTypeContext", ShouldUpdateMessageTypeContext);
+            PropertyBagHelper.WritePropertyBag(pb, NamespaceToModifyPropertyName, NamespaceToModify);
+            PropertyBagHelper.WritePropertyBag(pb, NewNamespacePropertyName, NewNamespace);
+            PropertyBagHelper.WritePropertyBag(pb, ShouldUpdateMessagewTypeContextPropertyName, ShouldUpdateMessageTypeContext);
         }
 
         #region IComponent members
