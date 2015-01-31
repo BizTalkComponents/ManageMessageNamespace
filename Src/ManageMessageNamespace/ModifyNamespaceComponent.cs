@@ -28,7 +28,7 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
         public string NamespaceToModify { get; set; }
         [RequiredRuntime]
         [DisplayName("New Namespace")]
-        [Description("The new namespace..")]
+        [Description("The new namespace.")]
         public string NewNamespace { get; set; }
 
         public bool ShouldUpdateMessageTypeContext { get; set; }
