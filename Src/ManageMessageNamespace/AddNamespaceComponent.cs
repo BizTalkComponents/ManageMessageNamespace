@@ -35,7 +35,7 @@ namespace Shared.PipelineComponents.ManageMessageNamespace
         [Description("0 = Unqualified, 1 = Qualified, 2 = Default")]
         public NamespaceFormEnum NamespaceForm { get; set; }
         [DisplayName("XPath")]
-        [Description("The path to set namespace on.")]
+        [Description("The path to set namespace on. Optional.")]
         public string XPath { get; set; }
 
         #region IPersistPropertyBag members
