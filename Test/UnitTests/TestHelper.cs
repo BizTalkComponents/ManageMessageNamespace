@@ -4,14 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests.Constants;
+using BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests.Models;
 using Microsoft.BizTalk.Component.Interop;
 using Microsoft.BizTalk.Message.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Shared.PipelineComponents.ManageMessageNamespace.Tests.Constants;
-using Shared.PipelineComponents.ManageMessageNamespace.Tests.Models;
 using Winterdom.BizTalk.PipelineTesting;
 
-namespace Shared.PipelineComponents.ManageMessageNamespace.Tests
+namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests
 {
     static class TestHelper
     {

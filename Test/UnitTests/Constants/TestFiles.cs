@@ -1,4 +1,4 @@
-﻿namespace Shared.PipelineComponents.ManageMessageNamespace.Tests.Constants
+﻿namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests.Constants
 {
     public class TestFiles
     {
