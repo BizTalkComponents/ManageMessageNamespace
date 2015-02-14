@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Shared.PipelineComponents.ManageMessageNamespace
+namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
 {
     public class NavigationPath
     {

@@ -7,8 +7,8 @@
     <ProjectGuid>{B206213C-8466-44EB-AA0A-40846CEA2730}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Shared.PipelineComponents.ManageMessageNamespace</RootNamespace>
-    <AssemblyName>Shared.PipelineComponents.ManageMessageNamespace</AssemblyName>
+    <RootNamespace>BizTalkComponents.PipelineComponents.ManageMessageNamespace</RootNamespace>
+    <AssemblyName>BizTalkComponents.PipelineComponents.ManageMessageNamespace</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>

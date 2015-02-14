@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Shared.PipelineComponents.ModifyMessageType")]
+[assembly: AssemblyTitle("BizTalkComponents.PipelineComponents.ManageMessageNamespace")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Shared.PipelineComponents.ModifyMessageType")]
+[assembly: AssemblyProduct("BizTalkComponents.PipelineComponents.ManageMessageNamespace")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

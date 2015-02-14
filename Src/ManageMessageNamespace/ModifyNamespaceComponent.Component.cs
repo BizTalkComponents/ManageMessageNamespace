@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using BizTalkComponents.Utils;
 
-namespace Shared.PipelineComponents.ManageMessageNamespace
+namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
 {
     public partial class ModifyNamespaceComponent
     {

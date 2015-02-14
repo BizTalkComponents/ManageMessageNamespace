@@ -1,4 +1,4 @@
-﻿namespace Shared.PipelineComponents.ManageMessageNamespace.Tests.Models
+﻿namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests.Models
 {
     public class ContextProperty
     {

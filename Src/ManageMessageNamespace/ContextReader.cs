@@ -1,7 +1,6 @@
-﻿using System;
-using Microsoft.BizTalk.Message.Interop;
+﻿using Microsoft.BizTalk.Message.Interop;
 
-namespace Shared.PipelineComponents.ManageMessageNamespace
+namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
 {
     class ContextReader
     {

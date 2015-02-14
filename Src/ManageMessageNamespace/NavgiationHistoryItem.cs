@@ -1,4 +1,4 @@
-﻿namespace Shared.PipelineComponents.ManageMessageNamespace
+﻿namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
 {
     public class NavgiationHistoryItem
     {
