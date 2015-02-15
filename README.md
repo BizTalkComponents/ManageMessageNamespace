@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/github/BizTalkComponents/ManageMessageNamespace?branch=master)](https://ci.appveyor.com/api/projects/status/github/BizTalkComponents/ManageMessageNamespace/branch/master)
