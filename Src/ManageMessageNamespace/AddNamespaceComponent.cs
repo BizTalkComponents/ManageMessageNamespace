@@ -1,16 +1,16 @@
-﻿using System;
-using System.ComponentModel;
-using System.IO;
-using BizTalkComponents.Utils;
+﻿using BizTalkComponents.Utils;
 using Microsoft.BizTalk.Component.Interop;
 using Microsoft.BizTalk.Message.Interop;
+using Microsoft.BizTalk.Streaming;
+using System;
+using System.ComponentModel;
+using System.IO;
 
 namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
 {
     [ComponentCategory(CategoryTypes.CATID_PipelineComponent)]
     [ComponentCategory(CategoryTypes.CATID_Any)]
     [System.Runtime.InteropServices.Guid("950C8198-9AAD-467E-BA9C-16AA080C7D7C")]
-
     public partial class AddNamespaceComponent : IBaseComponent,
         Microsoft.BizTalk.Component.Interop.IComponent,
         IComponentUI,
@@ -25,20 +25,23 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
         [DisplayName("New Namespace")]
         [Description("The new namespace to set.")]
         public string NewNamespace { get; set; }
+
         [RequiredRuntime]
         [DisplayName("Should update messagetype context")]
         [Description("Specifies wether the message type should be updated with the new namespace.")]
         public bool ShouldUpdateMessageTypeContext { get; set; }
+
         [RequiredRuntime]
         [DisplayName("Namespace form")]
         [Description("0 = Unqualified, 1 = Qualified, 2 = Default")]
         public NamespaceFormEnum NamespaceForm { get; set; }
+
         [DisplayName("XPath")]
         [Description("The path to set namespace on. Optional.")]
         public string XPath { get; set; }
 
         #region IPersistPropertyBag members
-       
+
         public virtual void Load(IPropertyBag pb, int errlog)
         {
             NewNamespace = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(pb, NewNamespacePropertyName), string.Empty);
@@ -69,7 +72,7 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
             PropertyBagHelper.WritePropertyBag(pb, ShouldUpdateMessageTypeContextPropertyName, ShouldUpdateMessageTypeContext);
         }
 
-        #endregion
+        #endregion IPersistPropertyBag members
 
         #region IComponent members
 
@@ -84,13 +87,22 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
 
             var contentReader = new ContentReader();
 
-            //Stream virtualStream = new VirtualStream();
-            //Stream data = new ReadOnlySeekableStream(pInMsg.BodyPart.GetOriginalDataStream(), virtualStream);
             var data = pInMsg.BodyPart.GetOriginalDataStream();
+
+            if (!data.CanSeek || !data.CanRead)
+            {
+                const int bufferSize = 0x280;
+                const int thresholdSize = 0x100000;
+                data = new ReadOnlySeekableStream(data, new VirtualStream(bufferSize, thresholdSize), bufferSize);
+                pContext.ResourceTracker.AddResource(data);
+            }
+
             if (contentReader.IsXmlContent(data))
             {
                 var encoding = contentReader.Encoding(data);
-                pInMsg.BodyPart.Data = new ContentWriter().AddNamespace(data, NewNamespace, NamespaceForm, XPath, encoding);
+                data = new ContentWriter().AddNamespace(data, NewNamespace, NamespaceForm, XPath, encoding);
+                pContext.ResourceTracker.AddResource(data);
+                pInMsg.BodyPart.Data = data;
 
                 if (ShouldUpdateMessageTypeContext)
                 {
@@ -109,6 +121,6 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
             return pInMsg;
         }
 
-        #endregion
+        #endregion IComponent members
     }
 }
