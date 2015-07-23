@@ -43,6 +43,7 @@
     <AssemblyOriginatorKeyFile>BizTalkComponents.PipelineComponents.ManageMessageNamespace.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.BizTalk.GlobalPropertySchemas, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.BizTalk.Pipeline, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft BizTalk Server 2013\Microsoft.BizTalk.Pipeline.dll</HintPath>
@@ -51,6 +52,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft BizTalk Server 2013\Microsoft.BizTalk.Streaming.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.XLANGs.BaseTypes, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -65,9 +67,16 @@
     <Compile Include="BiztalkComponents.Utils\ContextExtensions.cs" />
     <Compile Include="BiztalkComponents.Utils\ContextProperties.cs" />
     <Compile Include="BiztalkComponents.Utils\ContextProperty.cs" />
+    <Compile Include="BiztalkComponents.Utils\NamespaceFormEnum.cs" />
+    <Compile Include="BiztalkComponents.Utils\NavigationHistoryItem.cs" />
+    <Compile Include="BiztalkComponents.Utils\NavigationHistoryManager.cs" />
+    <Compile Include="BiztalkComponents.Utils\NavigationPath.cs" />
     <Compile Include="BiztalkComponents.Utils\PropertyBagHelper.cs" />
     <Compile Include="BiztalkComponents.Utils\RequiredRuntimeAttribute.cs" />
     <Compile Include="BiztalkComponents.Utils\ValidationHelper.cs" />
+    <Compile Include="BiztalkComponents.Utils\XmlNamespaceAdder.cs" />
+    <Compile Include="BiztalkComponents.Utils\XmlNamespaceModifier.cs" />
+    <Compile Include="BiztalkComponents.Utils\XmlNamespaceRemover.cs" />
     <Compile Include="ContentWriter.cs" />
     <Compile Include="ContextReader.cs" />
     <Compile Include="AddNamespaceComponent.cs" />
