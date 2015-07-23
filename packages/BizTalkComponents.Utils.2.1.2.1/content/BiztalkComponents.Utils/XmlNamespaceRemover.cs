@@ -13,6 +13,11 @@ namespace BizTalkComponents.Utils
 
         }
 
+        public XmlNamespaceRemover(Stream input, Encoding encoding) : base(new XmlTextReader(input), encoding)
+        {
+            
+        }
+
         protected override void TranslateStartElement(string prefix, string localName, string nsURI)
         {
             base.TranslateStartElement(null, localName, null);
@@ -28,6 +33,12 @@ namespace BizTalkComponents.Utils
             {
                 base.TranslateAttributeValue(prefix, localName, nsURI, val);    
             }
+        }
+
+        protected override void TranslateXmlDeclaration(string target, string val)
+        {
+            base.TranslateXmlDeclaration(target, val);
+            m_writer.WriteProcessingInstruction(target, val);
         }
     }
 }
