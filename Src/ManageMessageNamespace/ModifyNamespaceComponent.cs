@@ -44,6 +44,8 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
             {
                 throw new ArgumentException(errorMessage);
             }
+            const int bufferSize = 0x280;
+            const int thresholdSize = 0x100000;
 
             var contentReader = new ContentReader();
 
@@ -51,8 +53,7 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
 
             if (!data.CanSeek || !data.CanRead)
             {
-                const int bufferSize = 0x280;
-                const int thresholdSize = 0x100000;
+
                 data = new ReadOnlySeekableStream(data, new VirtualStream(bufferSize, thresholdSize), bufferSize);
                 pContext.ResourceTracker.AddResource(data);
             }
@@ -61,7 +62,8 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
             {
                 var encoding = contentReader.Encoding(data);
 
-                data = new ContentWriter().ModifyNamespace(data, NamespaceToModify, NewNamespace, encoding);
+                data = new XmlNamespaceModifier(data, encoding, NewNamespace, null, NamespaceToModify);
+                data = new ReadOnlySeekableStream(data, new VirtualStream(bufferSize, thresholdSize), bufferSize);
                 pContext.ResourceTracker.AddResource(data);
                 pInMsg.BodyPart.Data = data;
 
@@ -100,7 +102,7 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
 
             if ((shouldUpdateMessageTypeContext != null))
             {
-                ShouldUpdateMessageTypeContext = ((bool) (shouldUpdateMessageTypeContext));
+                ShouldUpdateMessageTypeContext = ((bool)(shouldUpdateMessageTypeContext));
             }
         }
 

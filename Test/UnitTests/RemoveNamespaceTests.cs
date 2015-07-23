@@ -33,6 +33,7 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests
             }
         }
 
+        [TestMethod]
         public void RemoveUnqualifiedNamespace()
         {
             var removeNamespaceComponent = new RemoveNamespaceComponent();
@@ -54,6 +55,7 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests
             }
         }
 
+        [TestMethod]
         public void RemoveQualifiedDefaultNamespace()
         {
             var removeNamespaceComponent = new RemoveNamespaceComponent();

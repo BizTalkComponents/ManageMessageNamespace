@@ -5,6 +5,7 @@ using Microsoft.BizTalk.Streaming;
 using System;
 using System.ComponentModel;
 using System.IO;
+using System.Xml;
 
 namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
 {
@@ -85,14 +86,15 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
                 throw new ArgumentException(errorMessage);
             }
 
+            const int bufferSize = 0x280;
+            const int thresholdSize = 0x100000;
+
             var contentReader = new ContentReader();
 
             var data = pInMsg.BodyPart.GetOriginalDataStream();
 
             if (!data.CanSeek || !data.CanRead)
             {
-                const int bufferSize = 0x280;
-                const int thresholdSize = 0x100000;
                 data = new ReadOnlySeekableStream(data, new VirtualStream(bufferSize, thresholdSize), bufferSize);
                 pContext.ResourceTracker.AddResource(data);
             }
@@ -100,9 +102,11 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
             if (contentReader.IsXmlContent(data))
             {
                 var encoding = contentReader.Encoding(data);
-                data = new ContentWriter().AddNamespace(data, NewNamespace, NamespaceForm, XPath, encoding);
+                data = new XmlNamespaceAdder(data, XPath,NamespaceForm,NewNamespace,encoding);
+                data = new ReadOnlySeekableStream(data, new VirtualStream(bufferSize, thresholdSize), bufferSize);
+                
                 pContext.ResourceTracker.AddResource(data);
-                pInMsg.BodyPart.Data = data;
+                
 
                 if (ShouldUpdateMessageTypeContext)
                 {
@@ -115,8 +119,11 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
             else
             {
                 data.Seek(0, SeekOrigin.Begin);
-                pInMsg.BodyPart.Data = data;
             }
+
+            pInMsg.BodyPart.Data = data;
+
+           
 
             return pInMsg;
         }

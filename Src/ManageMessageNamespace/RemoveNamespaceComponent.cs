@@ -3,6 +3,7 @@ using Microsoft.BizTalk.Message.Interop;
 using Microsoft.BizTalk.Streaming;
 using System.IO;
 using System.Runtime.InteropServices;
+using BizTalkComponents.Utils;
 
 namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
 {
@@ -30,7 +31,7 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
             if (contentReader.IsXmlContent(data))
             {
                 var encoding = contentReader.Encoding(data);
-                data = new ContentWriter().RemoveNamespace(data, encoding);
+                data = new XmlNamespaceRemover(data, encoding);
                 pContext.ResourceTracker.AddResource(data);
                 pInMsg.BodyPart.Data = data;
             }

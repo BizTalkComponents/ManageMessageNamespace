@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Xml;
 using BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests.Constants;
 using BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests.Extensions;
+using BizTalkComponents.Utils;
 using Microsoft.BizTalk.Component.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Winterdom.BizTalk.PipelineTesting;

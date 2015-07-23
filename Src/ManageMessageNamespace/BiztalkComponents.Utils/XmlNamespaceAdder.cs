@@ -13,7 +13,7 @@ namespace BizTalkComponents.Utils
         private readonly string _namespaceToAdd;
         private static NavigationHistoryManager _navigationHistoryManager;
 
-        public XmlNamespaceAdder(Stream input, string xPath, NamespaceFormEnum namespaceForm, string namespaceToAdd) : base(new XmlTextReader(input))
+        public XmlNamespaceAdder(Stream input, string xPath, NamespaceFormEnum namespaceForm, string namespaceToAdd, Encoding encoding) : base(new XmlTextReader(input), encoding)
         {
             _xPath = xPath;
             _namespaceForm = namespaceForm;
@@ -74,6 +74,12 @@ namespace BizTalkComponents.Utils
                     base.TranslateStartElement(m_reader.Prefix, m_reader.LocalName, ns);
                 }
             }
+        }
+
+        protected override void TranslateXmlDeclaration(string target, string val)
+        {
+            base.TranslateXmlDeclaration(target, val);
+            m_writer.WriteProcessingInstruction(target, val);
         }
     }
 }

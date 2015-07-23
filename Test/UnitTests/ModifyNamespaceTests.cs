@@ -136,9 +136,10 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests
 
             var result = TestHelper.ExecuteReceivePipeline(TestFiles.UnqualifiedXmlFilePath, components);
 
-            var file = File.Open(TestFiles.UnqualifiedXmlFilePath, FileMode.Open);
-
-            Assert.IsTrue(file.ToByteArray().SequenceEqual(result[0].BodyPart.Data.ToByteArray()), "Non matching file is changed");
+            using (var file = File.Open(TestFiles.UnqualifiedXmlFilePath, FileMode.Open))
+            {
+                Assert.IsTrue(file.ToByteArray().SequenceEqual(result[0].BodyPart.Data.ToByteArray()), "Non matching file is changed");
+            }
         }
 
         [TestMethod]
@@ -158,7 +159,7 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests
                 Name = Misc.SystemPropertyName,
                 Namespace = Misc.SystemPropertyNamespace,
                 Value = string.Concat(Misc.ModifiedNamespace,"#","Test")
-                
+
             }};
 
             var components = new List<Tuple<IBaseComponent, PipelineStage>>
