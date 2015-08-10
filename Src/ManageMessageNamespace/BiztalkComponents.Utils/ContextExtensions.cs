@@ -5,24 +5,33 @@ namespace BizTalkComponents.Utils
 {
     public static class ContextExtensions
     {
-        public static bool TryRead(this IBaseMessageContext ctx ,ContextProperty property, out object val)
+        public static bool TryRead<T>(this IBaseMessageContext ctx, ContextProperty property, out T val)
         {
             if (property == null)
             {
                 throw new ArgumentNullException("property");
             }
+            object content = ctx.Read(property.PropertyName, property.PropertyNamespace);
+            if (content is T)
+            {
+                val = (T)content;
+                return true;
+            }
+            else
+            {
+                val = default(T);
+                return false;
+            }
+        }
 
-            return ((val = ctx.Read(property.PropertyName, property.PropertyNamespace)) != null);
+        public static bool TryRead(this IBaseMessageContext ctx, ContextProperty property, out object val)
+        {
+            return TryRead<object>(ctx, property, out val);
         }
 
         public static bool TryRead(this IBaseMessageContext ctx, ContextProperty property, out string val)
         {
-            if (property == null)
-            {
-                throw new ArgumentNullException("property");
-            }
-            
-            val = ctx.Read(property.PropertyName, property.PropertyNamespace) as string;
+            TryRead<string>(ctx, property, out val);
 
             return !string.IsNullOrWhiteSpace(val);
         }
