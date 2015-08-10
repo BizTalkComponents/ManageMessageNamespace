@@ -76,7 +76,6 @@
     <Compile Include="BiztalkComponents.Utils\PropertyBagHelper.cs" />
     <Compile Include="BiztalkComponents.Utils\RequiredRuntimeAttribute.cs" />
     <Compile Include="BiztalkComponents.Utils\ValidationHelper.cs" />
-    <Compile Include="ContentWriter.cs" />
     <Compile Include="ContextReader.cs" />
     <Compile Include="AddNamespaceComponent.cs" />
     <Compile Include="ContentReader.cs" />
