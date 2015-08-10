@@ -125,7 +125,7 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
         {
             const string prefix = "ns0";
             var path =
-                _navigationHistoryManager.Add(new NavgiationHistoryItem(reader.Depth, reader.LocalName,
+                _navigationHistoryManager.Add(new NavigationHistoryItem(reader.Depth, reader.LocalName,
                     reader.NamespaceURI));
 
             if (string.IsNullOrEmpty(xPath) && reader.NamespaceURI != string.Empty && reader.Depth == 0)
