@@ -6,6 +6,7 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.InteropServices;
+using BizTalkComponents.PipelineComponents.ManageMessageNamespace.Streams;
 using IComponent = Microsoft.BizTalk.Component.Interop.IComponent;
 
 namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
@@ -48,11 +49,11 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
             var contentReader = new ContentReader();
 
             var data = pInMsg.BodyPart.GetOriginalDataStream();
+            const int bufferSize = 0x280;
+            const int thresholdSize = 0x100000;
 
             if (!data.CanSeek || !data.CanRead)
             {
-                const int bufferSize = 0x280;
-                const int thresholdSize = 0x100000;
                 data = new ReadOnlySeekableStream(data, new VirtualStream(bufferSize, thresholdSize), bufferSize);
                 pContext.ResourceTracker.AddResource(data);
             }
@@ -61,7 +62,8 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
             {
                 var encoding = contentReader.Encoding(data);
 
-                data = new ContentWriter().ModifyNamespace(data, NamespaceToModify, NewNamespace, encoding);
+                data = new XmlNamespaceModifier(data, encoding, NewNamespace, null, NamespaceToModify);
+                data = new ReadOnlySeekableStream(data, new VirtualStream(bufferSize, thresholdSize), bufferSize);
                 pContext.ResourceTracker.AddResource(data);
                 pInMsg.BodyPart.Data = data;
 

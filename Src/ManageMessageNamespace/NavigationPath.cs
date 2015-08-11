@@ -6,9 +6,9 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
     public class NavigationPath
     {
         public string Path { get; private set; }
-        private readonly List<NavgiationHistoryItem> _navgiationHistoryItems;
+        private readonly List<NavigationHistoryItem> _navgiationHistoryItems;
 
-        public NavigationPath(string path, List<NavgiationHistoryItem> navgiationHistoryItems )
+        public NavigationPath(string path, List<NavigationHistoryItem> navgiationHistoryItems )
         {
             Path = path;
             _navgiationHistoryItems = navgiationHistoryItems;

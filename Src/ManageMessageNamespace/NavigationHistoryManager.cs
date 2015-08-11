@@ -7,14 +7,14 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
     {
         private int _lastDepth;
         
-        private readonly List<NavgiationHistoryItem> _navigationHistoryItems;
+        private readonly List<NavigationHistoryItem> _navigationHistoryItems;
 
         public NavigationHistoryManager()
         {
-            _navigationHistoryItems = new List<NavgiationHistoryItem>();
+            _navigationHistoryItems = new List<NavigationHistoryItem>();
         }
 
-        public NavigationPath Add(NavgiationHistoryItem item)
+        public NavigationPath Add(NavigationHistoryItem item)
         {
             if (item.Depth < _lastDepth)
                 _navigationHistoryItems.RemoveAll(i => i.Depth >= item.Depth);
@@ -28,7 +28,7 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
             return new NavigationPath(path, _navigationHistoryItems);
         }
 
-        public string ToPath(List<NavgiationHistoryItem> items)
+        public string ToPath(List<NavigationHistoryItem> items)
         {
             var path = "";
 
