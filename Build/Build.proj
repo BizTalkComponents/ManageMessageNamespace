@@ -1,5 +1,6 @@
 <Project DefaultTargets="GenerateMsi" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<Import Project="$(MSBuildExtensionsPath)\BtsMsiTask\BtsMsiTask.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\ExtensionPack\4.0\MSBuild.ExtensionPack.tasks"/>
 	<PropertyGroup>
 		<DestinationPath>.</DestinationPath>
 		<ApplicationName>BizTalkComponents.PipelineComponents.ManageMessageNamespace</ApplicationName>
@@ -7,12 +8,19 @@
 	<ItemGroup>
 		<Resource Include="..\Src\ManageMessageNamespace\bin\Debug\BizTalkComponents.PipelineComponents.ManageMessageNamespace.dll" />
 	</ItemGroup>
-		
-	<Target Name="GenerateMsi">
-		<MsiTask  
-			FileName="$(FileName)"
+
+  <Target Name="GetVersion">
+    <MSBuild.ExtensionPack.Framework.Assembly TaskAction="GetInfo" NetAssembly="..\Src\ManageMessageNamespace\bin\Debug\BizTalkComponents.PipelineComponents.ManageMessageNamespace.dll">
+      <Output TaskParameter="OutputItems" ItemName="Info"/>
+    </MSBuild.ExtensionPack.Framework.Assembly>
+  </Target>
+
+  <Target Name="GenerateMsi" DependsOnTargets="GetVersion">
+    <MsiTask
+			FileName="BizTalkComponents.PipelineComponents.ManageMessageNamespace%(Info.AssemblyInformationalVersion).msi"
 			DestinationPath="$(DestinationPath)"
 			ApplicationName="$(ApplicationName)"
+      SourceLocation="C:\%(Info.AssemblyInformationalVersion)"
 			Resources="@(Resource)" />
-	</Target>
+  </Target>
 </Project>
