@@ -87,6 +87,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="BizTalkComponents.ManageMessageNamespace.nuspec" />
     <None Include="BizTalkComponents.PipelineComponents.ManageMessageNamespace.snk" />
     <None Include="packages.config" />
   </ItemGroup>
