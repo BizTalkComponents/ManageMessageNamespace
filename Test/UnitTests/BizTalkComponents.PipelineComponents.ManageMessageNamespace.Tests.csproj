@@ -108,13 +108,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Src\ManageMessageNamespace\BizTalkComponents.PipelineComponents.ManageMessageNamespace.csproj">
-      <Project>{b206213c-8466-44eb-aa0a-40846cea2730}</Project>
-      <Name>BizTalkComponents.PipelineComponents.ManageMessageNamespace</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\..\Src\ManageMessageNamespace\BizTalkComponents.PipelineComponents.ManageMessageNamespace.csproj">
+      <Project>{3d375e2d-55c4-4c68-a0ee-8caf7e74058f}</Project>
+      <Name>BizTalkComponents.PipelineComponents.ManageMessageNamespace</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

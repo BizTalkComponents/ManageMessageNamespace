@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalkComponents.ManageMessageNamespace", "Src\ManageMessageNamespace\BizTalkComponents.ManageMessageNamespace.csproj", "{B206213C-8466-44EB-AA0A-40846CEA2730}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalkComponents.PipelineComponents.ManageMessageNamespace", "Src\ManageMessageNamespace\BizTalkComponents.PipelineComponents.ManageMessageNamespace.csproj", "{3D375E2D-55C4-4C68-A0EE-8CAF7E74058F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests", "Test\UnitTests\BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests.csproj", "{AEC1FC5D-999E-4FC7-8C78-F51C1311488E}"
@@ -29,10 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B206213C-8466-44EB-AA0A-40846CEA2730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B206213C-8466-44EB-AA0A-40846CEA2730}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B206213C-8466-44EB-AA0A-40846CEA2730}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B206213C-8466-44EB-AA0A-40846CEA2730}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3D375E2D-55C4-4C68-A0EE-8CAF7E74058F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3D375E2D-55C4-4C68-A0EE-8CAF7E74058F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D375E2D-55C4-4C68-A0EE-8CAF7E74058F}.Release|Any CPU.ActiveCfg = Release|Any CPU
