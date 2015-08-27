@@ -11,7 +11,7 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace.Streams
         private readonly string _xPath;
         private readonly NamespaceFormEnum _namespaceForm;
         private readonly string _namespaceToAdd;
-        private static NavigationHistoryManager _navigationHistoryManager;
+        private readonly NavigationHistoryManager _navigationHistoryManager;
 
         public XmlNamespaceAdder(Stream input, string xPath, NamespaceFormEnum namespaceForm, string namespaceToAdd, Encoding encoding) : base(new XmlTextReader(input), encoding)
         {
