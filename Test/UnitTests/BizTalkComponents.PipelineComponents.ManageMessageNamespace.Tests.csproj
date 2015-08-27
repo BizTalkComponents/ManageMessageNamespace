@@ -8,6 +8,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BizTalkComponents.ManageMessageNamespace.Tests</RootNamespace>
     <AssemblyName>BizTalkComponents.ManageMessageNamespace.Tests</AssemblyName>
+    <RootNamespace>BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests</RootNamespace>
+    <AssemblyName>BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -106,9 +108,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Src\ManageMessageNamespace\BizTalkComponents.ManageMessageNamespace.csproj">
+    <ProjectReference Include="..\..\Src\ManageMessageNamespace\BizTalkComponents.PipelineComponents.ManageMessageNamespace.csproj">
       <Project>{b206213c-8466-44eb-aa0a-40846cea2730}</Project>
-      <Name>BizTalkComponents.ManageMessageNamespace</Name>
+      <Name>BizTalkComponents.PipelineComponents.ManageMessageNamespace</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

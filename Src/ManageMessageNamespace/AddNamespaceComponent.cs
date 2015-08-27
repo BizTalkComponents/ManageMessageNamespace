@@ -1,172 +1,111 @@
-﻿using System;
-using System.ComponentModel;
-using System.IO;
+﻿using BizTalkComponents.Utils;
 using Microsoft.BizTalk.Component.Interop;
 using Microsoft.BizTalk.Message.Interop;
+using Microsoft.BizTalk.Streaming;
+using System;
+using System.ComponentModel;
+using System.IO;
+using BizTalkComponents.PipelineComponents.ManageMessageNamespace.Streams;
 
-// TODO: Should have better GUI name for exposed parameters
-
-namespace BizTalkComponents.ManageMessageNamespace
+namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
 {
     [ComponentCategory(CategoryTypes.CATID_PipelineComponent)]
     [ComponentCategory(CategoryTypes.CATID_Any)]
     [System.Runtime.InteropServices.Guid("950C8198-9AAD-467E-BA9C-16AA080C7D7C")]
-
-    public class AddNamespaceComponent : IBaseComponent,
+    public partial class AddNamespaceComponent : IBaseComponent,
         Microsoft.BizTalk.Component.Interop.IComponent,
         IComponentUI,
         IPersistPropertyBag
     {
+        private const string XPathPropertyName = "XPath";
+        private const string NewNamespacePropertyName = "NewNamespace";
+        private const string NamespaceFormPropertyName = "NamespaceFormPropertyName";
+        private const string ShouldUpdateMessageTypeContextPropertyName = "ShouldUpdateMessageTypeContext";
+
+        [RequiredRuntime]
+        [DisplayName("New Namespace")]
+        [Description("The new namespace to set.")]
         public string NewNamespace { get; set; }
+
+        [RequiredRuntime]
+        [DisplayName("Should update messagetype context")]
+        [Description("Specifies wether the message type should be updated with the new namespace.")]
         public bool ShouldUpdateMessageTypeContext { get; set; }
+
+        [RequiredRuntime]
+        [DisplayName("Namespace form")]
+        [Description("0 = Unqualified, 1 = Qualified, 2 = Default")]
         public NamespaceFormEnum NamespaceForm { get; set; }
+
+        [DisplayName("XPath")]
+        [Description("The path to set namespace on. Optional.")]
         public string XPath { get; set; }
-
-        #region IBaseComponent members
-
-        [Browsable(false)]
-        public string Name
-        {
-            get
-            {
-                return "Add Namespace Component";
-            }
-        }
-
-        [Browsable(false)]
-        public string Version
-        {
-            get
-            {
-                return "2.2";
-            }
-        }
-
-        [Browsable(false)]
-        public string Description
-        {
-            get
-            {
-                return @"Adds a namespace to message.";
-            }
-        }
-
-        #endregion
 
         #region IPersistPropertyBag members
 
-        public void GetClassID(out Guid classid)
-        {
-            classid = new Guid("F961D046-8F95-455E-96CC-A30B41EDD1D9");
-        }
-
-        public void InitNew() { }
-
         public virtual void Load(IPropertyBag pb, int errlog)
         {
-            var val = ReadPropertyBag(pb, "NewNamespace");
+            NewNamespace = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(pb, NewNamespacePropertyName), string.Empty);
 
-            if ((val != null))
+            var namespaceForm = PropertyBagHelper.ReadPropertyBag(pb, NamespaceFormPropertyName);
+
+            if ((namespaceForm != null))
             {
-                NewNamespace = ((string)(val));
+                NamespaceForm = ((NamespaceFormEnum)(namespaceForm));
             }
 
-            val = ReadPropertyBag(pb, "NamespaceForm");
-            if ((val != null))
-            {
-                NamespaceForm = ((NamespaceFormEnum)(val));
-            }
+            XPath = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(pb, XPathPropertyName), string.Empty);
 
-            val = ReadPropertyBag(pb, "XPath");
-            if ((val != null))
-            {
-                XPath = ((string)(val));
-            }
+            var shouldUpdateMessageTypeContext = PropertyBagHelper.ReadPropertyBag(pb, ShouldUpdateMessageTypeContextPropertyName);
 
-            val = ReadPropertyBag(pb, "ShouldUpdateMessageTypeContext");
-            if ((val != null))
+            if ((shouldUpdateMessageTypeContext != null))
             {
-                ShouldUpdateMessageTypeContext = ((bool)(val));
+                ShouldUpdateMessageTypeContext = ((bool)(shouldUpdateMessageTypeContext));
             }
         }
 
         public virtual void Save(IPropertyBag pb, bool fClearDirty,
             bool fSaveAllProperties)
         {
-            WritePropertyBag(pb, "NewNamespace", NewNamespace);
-            WritePropertyBag(pb, "NamespaceForm", NamespaceForm);
-            WritePropertyBag(pb, "XPath", XPath);
-            WritePropertyBag(pb, "ShouldUpdateMessageTypeContext", ShouldUpdateMessageTypeContext);
+            PropertyBagHelper.WritePropertyBag(pb, NewNamespacePropertyName, NewNamespace);
+            PropertyBagHelper.WritePropertyBag(pb, NamespaceFormPropertyName, NamespaceForm);
+            PropertyBagHelper.WritePropertyBag(pb, XPathPropertyName, XPath);
+            PropertyBagHelper.WritePropertyBag(pb, ShouldUpdateMessageTypeContextPropertyName, ShouldUpdateMessageTypeContext);
         }
 
-        #endregion
-
-        #region Utility functionality
-
-        private static void WritePropertyBag(IPropertyBag pb, string propName, object val)
-        {
-            try
-            {
-                pb.Write(propName, ref val);
-            }
-            catch (Exception ex)
-            {
-                throw new ApplicationException(ex.Message);
-            }
-        }
-
-        private static object ReadPropertyBag(IPropertyBag pb, string propName)
-        {
-            object val = null;
-            try
-            {
-                pb.Read(propName, out val, 0);
-            }
-
-            catch (ArgumentException)
-            {
-                return val;
-            }
-            catch (Exception ex)
-            {
-                throw new ApplicationException(ex.Message);
-            }
-            return val;
-        }
-
-        #endregion
-
-        #region IComponentUI members
-
-        [Browsable(false)]
-        public IntPtr Icon
-        {
-            get
-            {
-                return IntPtr.Zero;
-            }
-        }
-
-        public System.Collections.IEnumerator Validate(object obj)
-        {
-            return null;
-        }
-
-        #endregion
+        #endregion IPersistPropertyBag members
 
         #region IComponent members
 
         public IBaseMessage Execute(IPipelineContext pContext, IBaseMessage pInMsg)
         {
+            string errorMessage;
+
+            if (!Validate(out errorMessage))
+            {
+                throw new ArgumentException(errorMessage);
+            }
+
             var contentReader = new ContentReader();
 
-            //Stream virtualStream = new VirtualStream();
-            //Stream data = new ReadOnlySeekableStream(pInMsg.BodyPart.GetOriginalDataStream(), virtualStream);
             var data = pInMsg.BodyPart.GetOriginalDataStream();
+            const int bufferSize = 0x280;
+            const int thresholdSize = 0x100000;
+
+            if (!data.CanSeek || !data.CanRead)
+            {
+               
+                data = new ReadOnlySeekableStream(data, new VirtualStream(bufferSize, thresholdSize), bufferSize);
+                pContext.ResourceTracker.AddResource(data);
+            }
+
             if (contentReader.IsXmlContent(data))
             {
                 var encoding = contentReader.Encoding(data);
-                pInMsg.BodyPart.Data = new ContentWriter().AddNamespace(data, NewNamespace, NamespaceForm, XPath, encoding);
+                data = new XmlNamespaceAdder(data, XPath, NamespaceForm, NewNamespace, encoding);
+                data = new ReadOnlySeekableStream(data, new VirtualStream(bufferSize, thresholdSize), bufferSize);
+                pContext.ResourceTracker.AddResource(data);
+                pInMsg.BodyPart.Data = data;
 
                 if (ShouldUpdateMessageTypeContext)
                 {
@@ -185,6 +124,6 @@ namespace BizTalkComponents.ManageMessageNamespace
             return pInMsg;
         }
 
-        #endregion
+        #endregion IComponent members
     }
 }

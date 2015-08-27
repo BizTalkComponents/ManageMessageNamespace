@@ -1,6 +1,6 @@
 ﻿using System.Xml;
 
-namespace Shared.PipelineComponents.ManageMessageNamespace.Tests.Extensions
+namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests.Extensions
 {
     public static class XmlReaderExtensions
     {

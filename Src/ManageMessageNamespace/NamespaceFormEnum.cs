@@ -1,4 +1,4 @@
-﻿namespace BizTalkComponents.ManageMessageNamespace
+namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
 {
     public enum NamespaceFormEnum
     {

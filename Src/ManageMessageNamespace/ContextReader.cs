@@ -1,6 +1,6 @@
 ﻿using Microsoft.BizTalk.Message.Interop;
 
-namespace BizTalkComponents.ManageMessageNamespace
+namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
 {
     class ContextReader
     {

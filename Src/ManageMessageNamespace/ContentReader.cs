@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 
-namespace BizTalkComponents.ManageMessageNamespace
+namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
 {
     class ContentReader
     {

@@ -2,9 +2,10 @@
 <package>
   <metadata>
     <id>BizTalkComponents.PipelineComponents.ManageMessageNamespace</id>
-    <version>1.0.0.0</version>
-    <authors>riha</authors>
-    <owners>ibizsolutions</owners>
-    <description>Shared.PipelineComponents.ManageMessageNamespace</description>
+    <version>$version$</version>
+    <authors>Richard Hallgren</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/BizTalkComponents/ManageMessageNamespace</projectUrl>
+    <description>BizTalkComponents.PipelineComponents.ManageMessageNamespace</description>
   </metadata>
 </package>
