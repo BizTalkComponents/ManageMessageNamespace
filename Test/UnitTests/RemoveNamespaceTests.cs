@@ -33,6 +33,7 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests
             }
         }
 
+        [TestMethod]
         public void RemoveUnqualifiedNamespace()
         {
             var removeNamespaceComponent = new RemoveNamespaceComponent();
