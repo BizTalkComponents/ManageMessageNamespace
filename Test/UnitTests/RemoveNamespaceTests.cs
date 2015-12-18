@@ -43,7 +43,7 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests
                 new Tuple<IBaseComponent, PipelineStage>(removeNamespaceComponent, PipelineStage.Validate)
             };
 
-            var result = TestHelper.ExecuteReceivePipeline(TestFiles.UnqualifiedXmlFilePath, components);
+            var result = TestHelper.ExecuteReceivePipeline(TestFiles.UnqualifiedXmlFilePath2, components);
 
             using (var reader = XmlReader.Create(result[0].BodyPart.Data))
             {
