@@ -50,6 +50,8 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests
                 reader.MoveToContent();
                 Assert.IsTrue(reader.NamespaceURI == string.Empty, "Root node namespace is not removed");
 
+                Assert.IsTrue(reader.AttributeCount == 0, "Namespace attribute is not removed");
+
                 reader.MoveToElement();
                 Assert.IsTrue(reader.NamespaceURI == string.Empty, "Child node namespace is not removed");
             }
