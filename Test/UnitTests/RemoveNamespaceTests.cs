@@ -33,6 +33,7 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests
             }
         }
 
+        [TestMethod]
         public void RemoveUnqualifiedNamespace()
         {
             var removeNamespaceComponent = new RemoveNamespaceComponent();
@@ -42,12 +43,14 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace.Tests
                 new Tuple<IBaseComponent, PipelineStage>(removeNamespaceComponent, PipelineStage.Validate)
             };
 
-            var result = TestHelper.ExecuteReceivePipeline(TestFiles.UnqualifiedXmlFilePath, components);
+            var result = TestHelper.ExecuteReceivePipeline(TestFiles.UnqualifiedXmlFilePath2, components);
 
             using (var reader = XmlReader.Create(result[0].BodyPart.Data))
             {
                 reader.MoveToContent();
                 Assert.IsTrue(reader.NamespaceURI == string.Empty, "Root node namespace is not removed");
+
+                Assert.IsTrue(reader.AttributeCount == 0, "Namespace attribute is not removed");
 
                 reader.MoveToElement();
                 Assert.IsTrue(reader.NamespaceURI == string.Empty, "Child node namespace is not removed");

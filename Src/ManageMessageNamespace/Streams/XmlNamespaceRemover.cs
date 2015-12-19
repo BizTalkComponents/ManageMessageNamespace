@@ -23,6 +23,14 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace.Streams
             base.TranslateStartElement(null, localName, null);
         }
 
+
+        protected override void TranslateAttribute()
+        {
+            if (this.m_reader.Prefix != "xmlns")
+                base.TranslateAttribute();
+        }
+
+
         protected override void TranslateAttributeValue(string prefix, string localName, string nsURI, string val)
         {
             if (localName == "xmlns")
@@ -31,9 +39,10 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace.Streams
             }
             else
             {
-                base.TranslateAttributeValue(prefix, localName, nsURI, val);    
+                base.TranslateAttributeValue(prefix, localName, nsURI, val);
             }
         }
+
 
         protected override void TranslateXmlDeclaration(string target, string val)
         {

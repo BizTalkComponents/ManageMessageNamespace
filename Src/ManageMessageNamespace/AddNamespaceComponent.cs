@@ -19,7 +19,7 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
     {
         private const string XPathPropertyName = "XPath";
         private const string NewNamespacePropertyName = "NewNamespace";
-        private const string NamespaceFormPropertyName = "NamespaceFormPropertyName";
+        private const string NamespaceFormPropertyName = "NamespaceForm";
         private const string ShouldUpdateMessageTypeContextPropertyName = "ShouldUpdateMessageTypeContext";
 
         [RequiredRuntime]

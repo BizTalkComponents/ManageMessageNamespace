@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ns0:Tests xmlns:ns0="http://test">
+  <Test1>
+    <InnerTest></InnerTest>
+  </Test1>
+  <Test2>
+    <InnerTest></InnerTest>
+  </Test2>
+</ns0:Tests>
