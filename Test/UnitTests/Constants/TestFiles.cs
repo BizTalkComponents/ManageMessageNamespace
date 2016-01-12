@@ -10,5 +10,6 @@
         public const string QualifiedDefaultXmlFilePath = @"TestData\XmlDefaultQualified.xml";
         public const string UnqualifiedDefaultXmlFilePath = @"TestData\XmlDefaultUnqualified.xml";
         public const string MissingBomXmlFilePath = @"TestData\XmlMissingBOM.xml";
+        public const string UnqualifiedXmlFilePathWithEmptyAttribute = @"TestData\XmlUnqualifiedWithEmptyAttributeNode.xml";
     }
 }

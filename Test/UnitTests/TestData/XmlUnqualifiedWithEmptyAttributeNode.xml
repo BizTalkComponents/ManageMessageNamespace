@@ -6,5 +6,5 @@
   <Test2>
     <InnerTest></InnerTest>
   </Test2>
-  <Test3 EmptyAttribute="Value" />>
+  <test3 test="example"/>
  </ns0:Tests>
