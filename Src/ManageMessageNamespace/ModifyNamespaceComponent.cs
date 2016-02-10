@@ -88,22 +88,9 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
 
         public virtual void Load(IPropertyBag pb, int errlog)
         {
-            NamespaceToModify =
-                PropertyBagHelper.ToStringOrDefault(
-                    PropertyBagHelper.ReadPropertyBag(pb, NamespaceToModifyPropertyName),
-                    string.Empty);
-
-            NewNamespace =
-                PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(pb, NewNamespacePropertyName),
-                    string.Empty);
-
-            var shouldUpdateMessageTypeContext = PropertyBagHelper.ReadPropertyBag(pb,
-                ShouldUpdateMessagewTypeContextPropertyName);
-
-            if ((shouldUpdateMessageTypeContext != null))
-            {
-                ShouldUpdateMessageTypeContext = ((bool) (shouldUpdateMessageTypeContext));
-            }
+            NamespaceToModify = PropertyBagHelper.ReadPropertyBag(pb, NamespaceToModifyPropertyName, NamespaceToModify);
+            NewNamespace = PropertyBagHelper.ReadPropertyBag(pb, NewNamespacePropertyName, NewNamespace);
+            ShouldUpdateMessageTypeContext = PropertyBagHelper.ReadPropertyBag(pb, ShouldUpdateMessagewTypeContextPropertyName, ShouldUpdateMessageTypeContext);
         }
 
         public virtual void Save(IPropertyBag pb, bool fClearDirty,
