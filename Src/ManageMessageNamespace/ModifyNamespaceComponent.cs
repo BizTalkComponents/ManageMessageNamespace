@@ -21,7 +21,7 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
     {
         private const string NamespaceToModifyPropertyName = "NamespaceToModify";
         private const string NewNamespacePropertyName = "NewNamespace";
-        private const string ShouldUpdateMessagewTypeContextPropertyName = "ShouldUpdateMessageTypeContext";
+        private const string ShouldUpdateMessageTypeContextPropertyName = "ShouldUpdateMessageTypeContext";
 
         [RequiredRuntime]
         [DisplayName("Namespace to modify")]
@@ -90,7 +90,7 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
         {
             NamespaceToModify = PropertyBagHelper.ReadPropertyBag(pb, NamespaceToModifyPropertyName, NamespaceToModify);
             NewNamespace = PropertyBagHelper.ReadPropertyBag(pb, NewNamespacePropertyName, NewNamespace);
-            ShouldUpdateMessageTypeContext = PropertyBagHelper.ReadPropertyBag(pb, ShouldUpdateMessagewTypeContextPropertyName, ShouldUpdateMessageTypeContext);
+            ShouldUpdateMessageTypeContext = PropertyBagHelper.ReadPropertyBag(pb, ShouldUpdateMessageTypeContextPropertyName, ShouldUpdateMessageTypeContext);
         }
 
         public virtual void Save(IPropertyBag pb, bool fClearDirty,
@@ -98,7 +98,7 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
         {
             PropertyBagHelper.WritePropertyBag(pb, NamespaceToModifyPropertyName, NamespaceToModify);
             PropertyBagHelper.WritePropertyBag(pb, NewNamespacePropertyName, NewNamespace);
-            PropertyBagHelper.WritePropertyBag(pb, ShouldUpdateMessagewTypeContextPropertyName,
+            PropertyBagHelper.WritePropertyBag(pb, ShouldUpdateMessageTypeContextPropertyName,
                 ShouldUpdateMessageTypeContext);
         }
     }
