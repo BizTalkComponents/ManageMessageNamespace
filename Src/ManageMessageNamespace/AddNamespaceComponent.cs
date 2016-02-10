@@ -45,23 +45,10 @@ namespace BizTalkComponents.PipelineComponents.ManageMessageNamespace
 
         public virtual void Load(IPropertyBag pb, int errlog)
         {
-            NewNamespace = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(pb, NewNamespacePropertyName), string.Empty);
-
-            var namespaceForm = PropertyBagHelper.ReadPropertyBag(pb, NamespaceFormPropertyName);
-
-            if ((namespaceForm != null))
-            {
-                NamespaceForm = ((NamespaceFormEnum)(namespaceForm));
-            }
-
-            XPath = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(pb, XPathPropertyName), string.Empty);
-
-            var shouldUpdateMessageTypeContext = PropertyBagHelper.ReadPropertyBag(pb, ShouldUpdateMessageTypeContextPropertyName);
-
-            if ((shouldUpdateMessageTypeContext != null))
-            {
-                ShouldUpdateMessageTypeContext = ((bool)(shouldUpdateMessageTypeContext));
-            }
+            NewNamespace = PropertyBagHelper.ReadPropertyBag(pb, NewNamespacePropertyName, NewNamespace);
+            NamespaceForm = PropertyBagHelper.ReadPropertyBag(pb, NamespaceFormPropertyName, NamespaceForm);
+            XPath = PropertyBagHelper.ReadPropertyBag(pb, XPathPropertyName, XPath);
+            ShouldUpdateMessageTypeContext = PropertyBagHelper.ReadPropertyBag(pb, ShouldUpdateMessageTypeContextPropertyName, ShouldUpdateMessageTypeContext);
         }
 
         public virtual void Save(IPropertyBag pb, bool fClearDirty,
